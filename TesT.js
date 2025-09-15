@@ -3,6 +3,49 @@ if (typeof categories !== "undefined" && Array.isArray(categories) && !categorie
 }
 
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
+    elements.TesTy_powder = {
+    color: ["#99dfff", "#b3beff", "#8687d1"],
+    behavior: behaviors.POWDER,
+    category: "powders",
+    state: "solid",
+    reactions: { "water": { elem1: "TesTy_water" } },
+    density: 800
+};
+
+    elements.TesTy_solid = {
+    color: ["#ff6666", "#ff4d4d", "#ff1a1a"],
+    behavior: behaviors.SOLID,
+    category: "solids",
+    state: "solid",
+    tempHigh: 100,
+    stateHigh: "TesTy_liquid",
+    density: 1200,
+    hardness: 0.7,
+    breakInto: "TesTy_powder"
+};
+
+    elements.TesTy_gas = {
+    color: "#ff9999",
+    behavior: behaviors.GAS,
+    category: "gases",
+    state: "gas",
+    tempLow: 0,
+    stateLow: "TesTy_water",
+    density: 0.6
+};
+
+    elements.TesTy_water = {
+  color: ["#00ffff", "#00ccff", "#0099ff"],
+  behavior: behaviors.LIQUID,
+  category: "liquids",
+  state: "liquid",
+  density: 1000,
+  temp: 25,
+  tempHigh: 100,
+  stateHigh: "TesTy_gas",
+  viscosity: 0.5,
+  hidden: false
+};
     elements.TesT_liquid = {
         color: ["#c6d402", "#eeff00", "#bdc011"],
         behavior: behaviors.LIQUID,
