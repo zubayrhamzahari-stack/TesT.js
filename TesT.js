@@ -1,8 +1,39 @@
 if (typeof categories !== "undefined" && Array.isArray(categories) && !categories.includes("testing")) {
     categories.push("testing");
 }
-
+function myisTouching(pixel, elementName) {
+  // Example implementation
+  for (const offset of [[1,0], [-1,0], [0,1], [0,-1]]) {
+    const x = pixel.x + offset[0];
+    const y = pixel.y + offset[1];
+    const neighbor = pixelMap[x]?.[y];
+    if (neighbor && neighbor.element === elementName) {
+      return true;
+    }
+  }
+  return false;
+}
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
+    elements.steak = {
+        color: ["#d2691e", "#ff7f50", "#8b4513"],
+        behavior: behaviors.POWDER,
+        category: "food",
+        state: "solid",
+        hardness: 0.5,
+        breakInto: "steak_chop",
+        density: 1.0,
+        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
+    };
+    
+    elements.steak_chop = {
+        color: ["#a0522d", "#cd5c5c", "#8b0000"],
+        behavior: behaviors.POWDER,
+        category: "food",
+        state: "solid",
+        density: 1.0,
+        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
+    };
+
     elements.TesT_liquid = {
         color: ["#c6d402", "#eeff00", "#bdc011"],
         behavior: behaviors.LIQUID,
@@ -60,7 +91,7 @@ elements.TesT_seed = {
   state: "solid",
   density: 0.9,
   tick: function(pixel) {
-    if (Math.random() < 0.01 && isTouching(pixel, "water")) {
+    if (Math.random() < 0.01 && myisTouching(pixel, "water")) {
       changePixel(pixel, "TesT_sprout");
     }
   }
@@ -156,7 +187,7 @@ elements.TesT_dead_plant = {
         stateHigh: "smoke",
         reactions: {
           "infection": { elem1: "TesT_mutant", chance: 0.3 },
-          "TesT_cell.nutrient": { elem1: "TesT_cell", chance: 0.5 }
+          "TesT_cell_nutrient": { elem1: "TesT_cell", chance: 0.5 }
        },
         tick: function(pixel) {
         // Optional: simulate aging or transformation
@@ -165,7 +196,7 @@ elements.TesT_dead_plant = {
         }
       }
     };
-    elements.TesT_cell.nutrient = {
+    elements.TesT_cell_nutrient = {
         color: ["#ffff66", "#ffff33", "#ffff99"],
         behavior: behaviors.POWDER,
         category: "testing",
@@ -189,7 +220,7 @@ elements.TesT_dead_plant = {
         stateHigh: "smoke",
         reactions: {
             "TesT_cell": { elem1: "TesT_mutant", chance: 0.4 },
-            "TesT_cell.nutrient": { elem1: "TesT_mutant", chance: 0.2 }
+            "TesT_cell_nutrient": { elem1: "TesT_mutant", chance: 0.2 }
         },
         tick: function(pixel) {
         if (Math.random() < 0.002) {
@@ -211,4 +242,3 @@ elements.TesT_dead_plant = {
        }
    };
 }
-
