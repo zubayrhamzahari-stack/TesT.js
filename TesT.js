@@ -14,18 +14,98 @@ function myisTouching(pixel, elementName) {
   return false;
 }
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
-    elements.steak = {
+  elements.TesT_egg = {
+  color: "#fff1a8",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 400,
+  breakInto: ["TesT_yolk","TesT_egg_white"]
+}
+
+elements.TesT_yolk = {
+  color: "#ffb300",
+  category: "food",
+  behavior: behaviors.LIQUID,
+  state: "liquid",
+  density: 10,
+  tempHigh: 75,
+  stateHigh: "TesT_omelet",
+  flammable: true,
+  burnInto: "TesT_burnt_Food",
+  burnTime: 25,
+  reactions: {
+    "TesT_egg_white": { elem1: "TesT_omelet", elem2: null, chance: 0.3 }
+  }
+}
+
+elements.TesT_egg_white = {
+  color: "#f3f2ee",
+  category: "food",
+  behavior: behaviors.LIQUID,
+  state: "liquid",
+  density: 10,
+  tempHigh: 75,
+  stateHigh: "TesT_omelet",
+  flammable: true,
+  burnInto: "TesT_burnt_Food",
+  burnTime: 25,
+  reactions: {
+    "TesT_yolk": { elem1: "TesT_omelet", elem2: null, chance: 0.3 }
+  }
+}
+
+elements.TesT_omelet = {
+  color: "#ffd46b",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 700,
+  tempHigh: 140,
+  stateHigh: "TesT_burnt_Food",
+  flammable: true,
+  burnInto: "TesT_burnt_Food",
+  burnTime: 40,
+  reactions: {
+    "TesT_garlic": { elem1: "TesT_garlic_omelet", elem2: null, chance: 0.2 },
+    "TesT_steak": { elem1: "TesT_steak_omelet", elem2: null, chance: 0.2 },
+    "TesT_chopped_garlic": { elem1: "TesT_garlic_omelet", elem2: null, chance: 0.3 },
+    "TesT_steak_chop": { elem1: "TesT_steak_omelet", elem2: null, chance: 0.3 }
+  }
+}
+
+elements.TesT_garlic = {
+        color: ["#987c9b", "#9a75a1", "#d895cf"],
+        behavior: behaviors.POWDER,
+        category: "food",
+        state: "solid",
+        hardness: 0.3,
+        breakInto: "TesT_chopped_garlic",
+        density: 1.0,
+        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
+    };
+
+    elements.TesT_chopped_garlic = {
+        color: ["#7f5f7d", "#8b5e8b", "#b070b0"],
+        behavior: behaviors.POWDER,
+        category: "food",
+        state: "solid",
+        density: 1.0,
+        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
+    };
+
+    elements.TesT_steak = {
         color: ["#d2691e", "#ff7f50", "#8b4513"],
         behavior: behaviors.POWDER,
         category: "food",
         state: "solid",
         hardness: 0.5,
-        breakInto: "steak_chop",
+        breakInto: "TesT_steak_chop",
         density: 1.0,
         reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
     };
     
-    elements.steak_chop = {
+    elements.TesT_steak_chop = {
         color: ["#a0522d", "#cd5c5c", "#8b0000"],
         behavior: behaviors.POWDER,
         category: "food",
@@ -33,6 +113,173 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
         density: 1.0,
         reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
     };
+
+elements.TesT_bread = {
+  color: "#f5deb3",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 300,
+  tempHigh: 50,
+  stateHigh: "TesT_toast",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 30,
+  reactions: {
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+  }
+}
+
+elements.TesT_toast = {
+  color: "#d2b48c",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 300,
+  tempHigh: 100,
+  stateHigh: "TesT_burnt_Food",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 20,
+  reactions: {
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 },
+    "TesT_garlic": { elem1: "TesT_garlic_toast"},
+    "TesT_chopped_garlic": { elem1: "TesT_garlic_toast"},
+    "TesT_steak": { elem1: "TesT_steak_toast"},
+    "TesT_steak_chop": { elem1: "TesT_steak_toast"},
+    "TesT_omelet": { elem1: "TesT_omelet_toast"},
+    "TesT_garlic_omelet": { elem1: "TesT_garlic_omelet_toast"},
+    "TesT_steak_omelet": { elem1: "TesT_steak_omelet_toast"}
+  }
+}
+elements.TesT_garlic_toast = {
+  color: "#c4a484",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 350,
+  tempHigh: 100,
+  stateHigh: "TesT_burnt_Food",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 20,
+  reactions: {
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+  }
+}
+
+elements.TesT_steak_toast = {
+  color: "#b5651d",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 400,
+  tempHigh: 100,
+  stateHigh: "TesT_burnt_Food",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 20,
+  reactions: {
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+  }
+}
+
+elements.TesT_omelet_toast = {
+  color: "#cfa15a",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 450,
+  tempHigh: 100,
+  stateHigh: "TesT_burnt_Food",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 20,
+  reactions: {
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+  }
+}
+
+elements.TesT_garlic_omelet_toast = {
+  color: "#a8904c",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 500,
+  tempHigh: 100,
+  stateHigh: "TesT_burnt_Food",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 20,
+  reactions: {
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+  }
+}
+
+elements.TesT_steak_omelet_toast = {
+  color: "#b0703f",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 550,
+  tempHigh: 100,
+  stateHigh: "TesT_burnt_Food",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 20,
+  reactions: {
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+  }
+}
+
+elements.TesT_garlic_omelet = {
+  color: "#d8c559",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 750,
+  tempHigh: 140,
+  stateHigh: "TesT_burnt_Food",
+  flammable: true,
+  burnInto: "TesT_burnt_Food",
+  burnTime: 40
+}
+
+elements.TesT_steak_omelet = {
+  color: "#e6a96f",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 800,
+  tempHigh: 140,
+  stateHigh: "TesT_burnt_Food",
+  flammable: true,
+  burnInto: "TesT_burnt_Food",
+  burnTime: 40
+}
+
+elements.TesT_burnt_Food = {
+  color: "#3a2e20",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 500,
+  flammable: false
+}
 
     elements.TesT_liquid = {
         color: ["#c6d402", "#eeff00", "#bdc011"],
@@ -84,17 +331,17 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     };
 
     //  TesT_seed → sprouts into TesT_sprout
-elements.TesT_seed = {
-  color: ["#8B4513", "#A0522D", "#CD853F"],
-  behavior: behaviors.POWDER,
-  category: "testing",
-  state: "solid",
-  density: 0.9,
-  tick: function(pixel) {
-    if (Math.random() < 0.01 && myisTouching(pixel, "water")) {
-      changePixel(pixel, "TesT_sprout");
-    }
-  }
+    elements.TesT_seed = {
+        color: ["#8B4513", "#A0522D", "#CD853F"],
+        behavior: behaviors.POWDER,
+        category: "testing",
+        state: "solid",
+        density: 0.9,
+        tick: function(pixel) {
+          if (Math.random() < 0.01 && myisTouching(pixel, "water")) {
+            changePixel(pixel, "TesT_sprout");
+        }
+    }    
 };
 
 //  TesT_sprout → grows into TesT_plant
