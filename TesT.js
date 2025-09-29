@@ -67,10 +67,11 @@ elements.TesT_omelet = {
   burnInto: "TesT_burnt_Food",
   burnTime: 40,
   reactions: {
-    "TesT_garlic": { elem1: "TesT_garlic_omelet", elem2: null, chance: 0.2 },
-    "TesT_steak": { elem1: "TesT_steak_omelet", elem2: null, chance: 0.2 },
-    "TesT_chopped_garlic": { elem1: "TesT_garlic_omelet", elem2: null, chance: 0.3 },
-    "TesT_steak_chop": { elem1: "TesT_steak_omelet", elem2: null, chance: 0.3 }
+    "TesT_garlic": { elem1: "TesT_garlic_omelet"},
+    "TesT_steak": { elem1: "TesT_steak_omelet"},
+    "TesT_chopped_garlic": { elem1: "TesT_garlic_omelet"},
+    "TesT_steak_chop": { elem1: "TesT_steak_omelet"},
+    "TesT_garlic_steak": { elem1: "TesT_garlic_steak_omelet"}
   }
 }
 
@@ -97,22 +98,35 @@ elements.TesT_garlic = {
     elements.TesT_steak = {
         color: ["#d2691e", "#ff7f50", "#8b4513"],
         behavior: behaviors.POWDER,
-        category: "food",
-        state: "solid",
-        hardness: 0.5,
-        breakInto: "TesT_steak_chop",
-        density: 1.0,
-        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
-    };
-    
+        category: "food", state: "solid",
+        hardness: 0.5, 
+        breakInto: "TesT_steak_chop", 
+        density: 1.0, reactions: {
+           "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 },
+           "TesT_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.3 }, 
+           "TesT_chopped_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.4 } 
+          } 
+        };
+
     elements.TesT_steak_chop = {
         color: ["#a0522d", "#cd5c5c", "#8b0000"],
         behavior: behaviors.POWDER,
         category: "food",
         state: "solid",
         density: 1.0,
-        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } }
-    };
+        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 },
+                     "TesT_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.3 }, 
+                     "TesT_chopped_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.4 } 
+                   } 
+           };
+
+    elements.TesT_garlic_steak = {
+       color: ["#b5651d", "#ff8c00", "#cd853f"], 
+       behavior: behaviors.POWDER, category: "food", 
+       state: "solid", density: 1.0, reactions: {
+         "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 } 
+        } 
+      };
 
 elements.TesT_bread = {
   color: "#f5deb3",
@@ -153,9 +167,12 @@ elements.TesT_toast = {
     "TesT_steak_chop": { elem1: "TesT_steak_toast"},
     "TesT_omelet": { elem1: "TesT_omelet_toast"},
     "TesT_garlic_omelet": { elem1: "TesT_garlic_omelet_toast"},
-    "TesT_steak_omelet": { elem1: "TesT_steak_omelet_toast"}
+    "TesT_steak_omelet": { elem1: "TesT_steak_omelet_toast"},
+    "TesT_garlic_steak": { elem1: "TesT_garlic_steak_toast"}, 
+    "TesT_garlic_steak_omelet": { elem1: "TesT_garlic_steak_omelet_toast"}
   }
 }
+
 elements.TesT_garlic_toast = {
   color: "#c4a484",
   category: "food",
@@ -192,6 +209,23 @@ elements.TesT_steak_toast = {
   }
 }
 
+elements.TesT_garlic_steak_toast = { 
+  color: "#c0906b", 
+  category: "food", 
+  behavior: behaviors.POWDER, 
+  state: "solid", 
+  density: 350, 
+  tempHigh: 100, 
+  stateHigh: "TesT_burnt_Food", 
+  hardness: 0.2, 
+  breakInto: "crumb", 
+  flammable: true, 
+  burnInto: "ash", 
+  burnTime: 20, 
+  reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+          } 
+      }
+
 elements.TesT_omelet_toast = {
   color: "#cfa15a",
   category: "food",
@@ -208,6 +242,44 @@ elements.TesT_omelet_toast = {
   reactions: {
     "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
   }
+}
+
+elements.TesT_garlic_omelet = {
+  color: "#d8c559",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 350,
+  tempHigh: 140,
+  stateHigh: "TesT_burnt_Food",
+  flammable: true,
+  burnInto: "TesT_burnt_Food",
+  burnTime: 40
+}
+
+elements.TesT_steak_omelet = {
+  color: "#e6a96f",
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 350,
+  tempHigh: 140,
+  stateHigh: "TesT_burnt_Food",
+  flammable: true,
+  burnInto: "TesT_burnt_Food",
+  burnTime: 40
+}
+
+elements.TesT_garlic_steak_omelet = { 
+  color: "#d18f5a", 
+  category: "food", 
+  behavior: behaviors.POWDER, 
+  state: "solid", 
+  density: 350, 
+  tempHigh: 140, 
+  stateHigh: "TesT_burnt_Food", 
+  flammable: true, burnInto: "TesT_burnt_Food",
+  burnTime: 40 
 }
 
 elements.TesT_garlic_omelet_toast = {
@@ -246,30 +318,21 @@ elements.TesT_steak_omelet_toast = {
   }
 }
 
-elements.TesT_garlic_omelet = {
-  color: "#d8c559",
-  category: "food",
-  behavior: behaviors.POWDER,
-  state: "solid",
-  density: 750,
-  tempHigh: 140,
-  stateHigh: "TesT_burnt_Food",
-  flammable: true,
-  burnInto: "TesT_burnt_Food",
-  burnTime: 40
-}
-
-elements.TesT_steak_omelet = {
-  color: "#e6a96f",
-  category: "food",
-  behavior: behaviors.POWDER,
-  state: "solid",
-  density: 800,
-  tempHigh: 140,
-  stateHigh: "TesT_burnt_Food",
-  flammable: true,
-  burnInto: "TesT_burnt_Food",
-  burnTime: 40
+elements.TesT_garlic_steak_omelet_toast = { 
+  color: "#8f6040", 
+  category: "food", 
+  behavior: behaviors.POWDER, 
+  state: "solid", 
+  density: 400, 
+  tempHigh: 100, 
+  stateHigh: "TesT_burnt_Food", 
+  hardness: 0.2, 
+  breakInto: "crumb", 
+  flammable: true, 
+  burnInto: "ash", 
+  burnTime: 20, 
+  reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+ } 
 }
 
 elements.TesT_burnt_Food = {
