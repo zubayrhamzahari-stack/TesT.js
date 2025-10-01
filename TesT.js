@@ -35,7 +35,7 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
   temp: 20,
   tempConduct: 0.5,
   density: 2000
-}
+};
 
   elements.TesT_egg = {
   color: "#fff1a8",
@@ -60,7 +60,7 @@ elements.TesT_yolk = {
   reactions: {
     "TesT_egg_white": { elem1: "TesT_omelet", elem2: null, chance: 0.3 }
   }
-}
+};
 
 elements.TesT_egg_white = {
   color: "#f3f2ee",
@@ -76,7 +76,7 @@ elements.TesT_egg_white = {
   reactions: {
     "TesT_yolk": { elem1: "TesT_omelet", elem2: null, chance: 0.3 }
   }
-}
+};
 
 elements.TesT_omelet = {
   color: "#ffd46b",
@@ -100,7 +100,7 @@ elements.TesT_omelet = {
     "TesT_steak_toast": { elem1: "TesT_steak_omelet_toast"},
     "TesT_garlic_steak_toast": { elem1: "TesT_garlic_steak_omelet_toast"}
   }
-}
+};
 
 elements.TesT_garlic = {
         color: ["#987c9b", "#9a75a1", "#d895cf"],
@@ -582,3 +582,4 @@ elements.TesT_dead_plant = {
    };
 }
 enabledMods.push("https://raw.githubusercontent.com/zubayrhamzahari-stack/TesT.js/main/TesT.js")
+
