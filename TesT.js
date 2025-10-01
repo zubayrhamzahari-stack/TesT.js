@@ -13,7 +13,30 @@ function myisTouching(pixel, elementName) {
   }
   return false;
 }
+
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
+  elements.TesT_pixel = {
+    color: ["#e61b14", "#ff9b04", "#fffb11", "#4bfc34", "#34cdfc", "#5234fc", "#eb34fc"],
+    behavior: behaviors.POWDER,
+    category: "special",
+    state: "solid"
+  };
+
+  elements.TesT_temp_pump = {
+  color: "#ffcc66",
+  behavior: [
+    "XX|HT:10|XX",     // Heats the pixel above
+    "HT:10|XX|CO:10",        // Neutral center
+    "XX|CO:10|XX"      // Cools the pixel below
+  ],
+  category: "machines",
+  temp: 20,
+  state: "solid",
+  temp: 20,
+  tempConduct: 0.5,
+  density: 2000
+}
+
   elements.TesT_egg = {
   color: "#fff1a8",
   category: "food",
@@ -29,7 +52,7 @@ elements.TesT_yolk = {
   behavior: behaviors.LIQUID,
   state: "liquid",
   density: 10,
-  tempHigh: 75,
+  tempHigh: 60,
   stateHigh: "TesT_omelet",
   flammable: true,
   burnInto: "TesT_burnt_Food",
@@ -45,7 +68,7 @@ elements.TesT_egg_white = {
   behavior: behaviors.LIQUID,
   state: "liquid",
   density: 10,
-  tempHigh: 75,
+  tempHigh: 60,
   stateHigh: "TesT_omelet",
   flammable: true,
   burnInto: "TesT_burnt_Food",
@@ -67,11 +90,15 @@ elements.TesT_omelet = {
   burnInto: "TesT_burnt_Food",
   burnTime: 40,
   reactions: {
+    "TesT_toast": { elem1: "TesT_omelet_toast"},
     "TesT_garlic": { elem1: "TesT_garlic_omelet"},
     "TesT_steak": { elem1: "TesT_steak_omelet"},
     "TesT_chopped_garlic": { elem1: "TesT_garlic_omelet"},
     "TesT_steak_chop": { elem1: "TesT_steak_omelet"},
-    "TesT_garlic_steak": { elem1: "TesT_garlic_steak_omelet"}
+    "TesT_garlic_steak": { elem1: "TesT_garlic_steak_omelet"},
+    "TesT_garlic_toast": { elem1: "TesT_garlic_omelet_toast"},
+    "TesT_steak_toast": { elem1: "TesT_steak_omelet_toast"},
+    "TesT_garlic_steak_toast": { elem1: "TesT_garlic_steak_omelet_toast"}
   }
 }
 
@@ -114,11 +141,12 @@ elements.TesT_garlic = {
         category: "food",
         state: "solid",
         density: 1.0,
-        reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 },
-                     "TesT_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.3 }, 
-                     "TesT_chopped_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.4 } 
-                   } 
-           };
+        reactions: { 
+          "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 },
+          "TesT_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.3 }, 
+          "TesT_chopped_garlic": { elem1: "TesT_garlic_steak", elem2: null, chance: 0.4 } 
+        } 
+      };
 
     elements.TesT_garlic_steak = {
        color: ["#b5651d", "#ff8c00", "#cd853f"], 
@@ -171,7 +199,7 @@ elements.TesT_toast = {
     "TesT_garlic_steak": { elem1: "TesT_garlic_steak_toast"}, 
     "TesT_garlic_steak_omelet": { elem1: "TesT_garlic_steak_omelet_toast"}
   }
-}
+};
 
 elements.TesT_garlic_toast = {
   color: "#c4a484",
@@ -189,7 +217,7 @@ elements.TesT_garlic_toast = {
   reactions: {
     "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
   }
-}
+};
 
 elements.TesT_steak_toast = {
   color: "#b5651d",
@@ -207,7 +235,7 @@ elements.TesT_steak_toast = {
   reactions: {
     "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
   }
-}
+};
 
 elements.TesT_garlic_steak_toast = { 
   color: "#c0906b", 
@@ -224,7 +252,7 @@ elements.TesT_garlic_steak_toast = {
   burnTime: 20, 
   reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
           } 
-      }
+      };
 
 elements.TesT_omelet_toast = {
   color: "#cfa15a",
@@ -242,7 +270,7 @@ elements.TesT_omelet_toast = {
   reactions: {
     "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
   }
-}
+};
 
 elements.TesT_garlic_omelet = {
   color: "#d8c559",
@@ -255,7 +283,7 @@ elements.TesT_garlic_omelet = {
   flammable: true,
   burnInto: "TesT_burnt_Food",
   burnTime: 40
-}
+};
 
 elements.TesT_steak_omelet = {
   color: "#e6a96f",
@@ -268,7 +296,7 @@ elements.TesT_steak_omelet = {
   flammable: true,
   burnInto: "TesT_burnt_Food",
   burnTime: 40
-}
+};
 
 elements.TesT_garlic_steak_omelet = { 
   color: "#d18f5a", 
@@ -280,7 +308,7 @@ elements.TesT_garlic_steak_omelet = {
   stateHigh: "TesT_burnt_Food", 
   flammable: true, burnInto: "TesT_burnt_Food",
   burnTime: 40 
-}
+};
 
 elements.TesT_garlic_omelet_toast = {
   color: "#a8904c",
@@ -298,7 +326,7 @@ elements.TesT_garlic_omelet_toast = {
   reactions: {
     "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
   }
-}
+};
 
 elements.TesT_steak_omelet_toast = {
   color: "#b0703f",
@@ -316,7 +344,7 @@ elements.TesT_steak_omelet_toast = {
   reactions: {
     "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
   }
-}
+};
 
 elements.TesT_garlic_steak_omelet_toast = { 
   color: "#8f6040", 
@@ -333,7 +361,7 @@ elements.TesT_garlic_steak_omelet_toast = {
   burnTime: 20, 
   reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
  } 
-}
+};
 
 elements.TesT_burnt_Food = {
   color: "#3a2e20",
@@ -342,7 +370,7 @@ elements.TesT_burnt_Food = {
   state: "solid",
   density: 500,
   flammable: false
-}
+};
 
     elements.TesT_liquid = {
         color: ["#c6d402", "#eeff00", "#bdc011"],
@@ -355,7 +383,8 @@ elements.TesT_burnt_Food = {
         stateLow: "TesT_wall",
         reactions: {
             "fire": { elem1: "TesT_gas", elem2: "steam", chance: 0.5 },
-            "water": { elem1: "bleach" }
+            "water": { elem1: "bleach", elem2: "bleach"},
+            "dirty_water": { elem1: "bleach", elem2: "bleach"}
         },
         density: 1100,
         viscosity: 10000
@@ -553,4 +582,3 @@ elements.TesT_dead_plant = {
    };
 }
 enabledMods.push("https://raw.githubusercontent.com/zubayrhamzahari-stack/TesT.js/main/TesT.js")
-
