@@ -15,7 +15,7 @@ function myisTouching(pixel, elementName) {
 }
 
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
-  elements.strawberry_cake = {
+  elements.TesT_strawberry_cake = {
     color: ["#ff4d6d", "#cc4f64", "#cc3355"],
     behavior: behaviors.STURDYPOWDER,
     category: "food",
@@ -688,3 +688,4 @@ elements.TesT_dead_plant = {
    };
 }
 enabledMods.push("https://raw.githubusercontent.com/zubayrhamzahari-stack/TesT.js/main/TesT.js")
+
