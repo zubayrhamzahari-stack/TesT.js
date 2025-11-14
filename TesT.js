@@ -15,14 +15,107 @@ function myisTouching(pixel, elementName) {
 }
 
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
-  elements.TesT_pixel = {
-    color: ["#e61b14", "#ff9b04", "#fffb11", "#4bfc34", "#34cdfc", "#5234fc", "#eb34fc"],
-    behavior: behaviors.POWDER,
-    category: "special",
-    state: "solid"
+  elements.strawberry_cake = {
+    color: ["#ff4d6d", "#cc4f64", "#cc3355"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
   };
 
-  elements.TesT_temp_pump = {
+  elements.TesTy_water = {
+    color: ["#5ec4ff", "#76bee7", "#359ad4"],
+    behavior: behaviors.LIQUID,
+    category: "liquids",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
+  };
+
+  elements.joy = {
+    color: "#fffd6a",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.anger = {
+    color: "#a80000",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.sadness = {
+    color: "#0078e9",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.confusion = {
+    color: "#919191",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.regret = {
+    color: "#ff79b7",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.jealousy = {
+    color: "#04ff26",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.anxiety = {
+    color: "#ff8420",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.fear = {
+    color: "#b800be",
+    behavior: behaviors.GAS,
+    category: "energy",
+    state: "gas"
+  };
+
+  elements.TesT_pixel = {
+    color: ["#e61b14", "#ff9b04", "#fffb11", "#4bfc34", "#34cdfc", "#5234fc", "#bd34fc", "#ff64dd"],
+    behavior: behaviors.POWDER,
+    category: "special",
+    state: "solid",
+    conduct: 1
+  };
+  
+  elements.TesT_mood_duplicator = {
+  color: "#00ffff",
+  behavior: [
+    "CR:jealousy|CR:fear|CR:sadness",
+    "CR:anger|XX|CR:confusion",
+    "CR:regret|CR:joy|CR:anxiety"
+  ],
+  category: "machines",
+  state: "solid"
+};
+
+  elements.TesT_tempature_pump = {
   color: "#ffcc66",
   behavior: [
     "XX|HT:10|XX",     // Heats the pixel above
@@ -44,7 +137,7 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
   state: "solid",
   density: 400,
   breakInto: ["TesT_yolk","TesT_egg_white"]
-}
+};
 
 elements.TesT_yolk = {
   color: "#ffb300",
@@ -422,6 +515,19 @@ elements.TesT_burnt_Food = {
         breakInto: "TesT_powder"
     };
 
+    elements.TesT_soda = {
+        color: "#7c3b10",
+        behavior: behaviors.LIQUID,
+        category: "testing",
+        state: "liquid",
+        temp: 15,
+        reactions: {
+          "sugar_water": { elem1: "TesT_soda", elem2: "TesT_gas", chance: 1 },
+          "seltzer": { elem1: "TesT_soda", elem2: "TesT_gas", chance: 1 },
+          "sugar": { elem1: "TesT_soda", elem2: "TesT_gas", chance: 1 }
+        }
+    };
+
     //  TesT_seed → sprouts into TesT_sprout
     elements.TesT_seed = {
         color: ["#8B4513", "#A0522D", "#CD853F"],
@@ -582,4 +688,3 @@ elements.TesT_dead_plant = {
    };
 }
 enabledMods.push("https://raw.githubusercontent.com/zubayrhamzahari-stack/TesT.js/main/TesT.js")
-
