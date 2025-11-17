@@ -15,6 +15,132 @@ function myisTouching(pixel, elementName) {
 }
 
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
+  elements.TesT_cake = {
+    color: ["#ffe6f0", "#ffb3c6", "#ff99b3"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
+  };
+
+  elements.TesT_vanilla = {
+    color: ["#dab830", "#ccb03f", "#bb9627"],
+    behavior: behaviors.LIQUID,
+    category: "food",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_cake": { elem1: "TesT_vanilla_cake", elem2: "TesT_vanilla_cake"},
+      "TesT_strawberry": { elem1: "TesT_vanilla_strawberry", elem2: "TesT_vanilla_strawberry"},
+      "TesT_chocolate": { elem1: "TesT_vanilla_chocolate", elem2: "TesT_vanilla_chocolate"},
+      "TesT_strawberry_cake": { elem1: "TesT_vanilla_strawberry_cake", elem2: "TesT_vanilla_strawberry_cake"},
+      "TesT_chocolate_cake": { elem1: "TesT_vanilla_chocolate_cake", elem2: "TesT_vanilla_chocolate_cake"}
+    }
+  };
+
+  elements.TesT_strawberry = {
+    color: ["#f02248", "#d41f3d", "#ca294c"],
+    behavior: behaviors.LIQUID,
+    category: "food",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_cake": { elem1: "TesT_strawberry_cake", elem2: "TesT_strawberry_cake"},
+      "TesT_vanilla": { elem1: "TesT_vanilla_strawberry", elem2: "TesT_vanilla_strawberry"},
+      "TesT_chocolate": { elem1: "TesT_strawberry_chocolate", elem2: "TesT_strawberry_chocolate"},
+      "TesT_vanilla_cake": { elem1: "TesT_vanilla_strawberry_cake", elem2: "TesT_vanilla_strawberry_cake"},
+      "TesT_chocolate_cake": { elem1: "TesT_strawberry_chocolate_cake", elem2: "TesT_strawberry_chocolate_cake"}
+    }
+  };
+
+  elements.TesT_chocolate = {
+    color: ["#4b2e05", "#6f4e37", "#3e2723"],
+    behavior: behaviors.LIQUID,
+    category: "food",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_cake": { elem1: "TesT_chocolate_cake", elem2: "TesT_chocolate_cake"},
+      "TesT_vanilla": { elem1: "TesT_vanilla_chocolate", elem2: "TesT_vanilla_chocolate"},
+      "TesT_strawberry": { elem1: "TesT_strawberry_chocolate", elem2: "TesT_strawberry_chocolate"},
+      "TesT_vanilla_cake": { elem1: "TesT_vanilla_chocolate_cake", elem2: "TesT_vanilla_chocolate_cake"},
+      "TesT_strawberry_cake": { elem1: "TesT_strawberry_chocolate_cake", elem2: "TesT_strawberry_chocolate_cake"}
+    }
+  };
+  
+  elements.TesT_vanilla_strawberry = {
+    color: ["#ffccdd", "#ff99bb", "#ff6699"],
+    behavior: behaviors.LIQUID,
+    category: "food",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_cake": { elem1: "TesT_vanilla_strawberry_cake", elem2: "TesT_vanilla_strawberry_cake"},
+      "TesT_chocolate": { elem1: "TesT_vanilla_strawberry_chocolate", elem2: "TesT_vanilla_strawberry_chocolate"},
+      "TesT_chocolate_cake": { elem1: "TesT_vanilla_strawberry_chocolate_cake", elem2: "TesT_vanilla_strawberry_chocolate_cake"}
+    }
+  };
+
+  elements.TesT_vanilla_chocolate = {
+    color: ["#d2b48c", "#a0522d", "#8b4513"],
+    behavior: behaviors.LIQUID,
+    category: "food",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_cake": { elem1: "TesT_vanilla_chocolate_cake", elem2: "TesT_vanilla_chocolate_cake"},
+      "TesT_strawberry": { elem1: "TesT_vanilla_strawberry_chocolate", elem2: "TesT_vanilla_strawberry_chocolate"},
+      "TesT_strawberry_cake": { elem1: "TesT_vanilla_strawberry_chocolate_cake", elem2: "TesT_vanilla_strawberry_chocolate_cake"}
+    }
+  };
+
+  elements.TesT_strawberry_chocolate = {
+    color: ["#8b0000", "#cd5c5c", "#ff7f50"],
+    behavior: behaviors.LIQUID,
+    category: "food",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_cake": { elem1: "TesT_strawberry_chocolate_cake", elem2: "TesT_strawberry_chocolate_cake"},
+      "TesT_vanilla": { elem1: "TesT_vanilla_strawberry_chocolate", elem2: "TesT_vanilla_strawberry_chocolate"},
+      "TesT_vanilla_cake": { elem1: "TesT_vanilla_strawberry_chocolate_cake", elem2: "TesT_vanilla_strawberry_chocolate_cake"}
+    }
+  };
+
+  elements.TesT_vanilla_strawberry_chocolate = {
+    color: ["#d8bfd8", "#faab7d", "#ff69b4"],
+    behavior: behaviors.LIQUID,
+    category: "food",
+    state: "liquid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_cake": { elem1: "TesT_vanilla_strawberry_chocolate_cake", elem2: "TesT_vanilla_strawberry_chocolate_cake"}
+    }
+  };
+  
+  // Thanks to Copilot for helping me with the reactions part of the elements on top :)
+  elements.TesT_vanilla_cake = {
+    color: ["#fff0b3", "#ffeb99", "#ffd966"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
+  };
+
   elements.TesT_strawberry_cake = {
     color: ["#ff4d6d", "#cc4f64", "#cc3355"],
     behavior: behaviors.STURDYPOWDER,
@@ -30,6 +156,95 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     }
   };
 
+  elements.TesT_chocolate_cake = {
+    color: ["#8b4513", "#a0522d", "#d2691e"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
+  };
+  
+  elements.TesT_vanilla_strawberry_cake = {
+    color: ["#ffdde6", "#ffb3c6", "#ff80aa"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_chocolate": { elem1: "TesT_vanilla_strawberry_chocolate_cake", elem2: "TesT_vanilla_strawberry_chocolate_cake"}
+    }
+  };
+  
+  elements.TesT_vanilla_chocolate_cake = {
+    color: ["#e6d2b5", "#cbb38a", "#b29670"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_strawberry": { elem1: "TesT_vanilla_strawberry_chocolate_cake", elem2: "TesT_vanilla_strawberry_chocolate_cake"}
+    }
+  };
+
+  elements.TesT_strawberry_chocolate_cake = {
+    color: ["#b22222", "#cd5c5c", "#ff7f50"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"},
+      "TesT_vanilla": { elem1: "TesT_vanilla_strawberry_chocolate_cake", elem2: "TesT_vanilla_strawberry_chocolate_cake"}
+    }
+  };
+
+  elements.TesT_vanilla_strawberry_chocolate_cake = {
+    color: ["#ffe6f2", "#ffb889", "#ff80b3"],
+    behavior: behaviors.STURDYPOWDER,
+    category: "food",
+    state: "solid",
+    density: 100,
+    temp: 15,
+    tempHigh: 50,
+    stateHigh: "cream",
+    breakInto: "crumb",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
+  };
+
+  elements.TesTy_sand = {
+    color: ["#f4e2a1", "#e6d291", "#d2b48c"],
+    behavior: behaviors.POWDER,
+    category: "land",
+    state: "solid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    },
+    conduct: 1
+  };
+
   elements.TesTy_water = {
     color: ["#5ec4ff", "#76bee7", "#359ad4"],
     behavior: behaviors.LIQUID,
@@ -38,6 +253,30 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     reactions: {
       "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
     }
+  };
+
+  elements.TesTy_wall = {
+    color: "#4b4b4b",
+    behavior: [
+      "XX|DL|XX",
+      "DL|XX|DL",
+      "XX|DB|XX"
+    ],
+    category: "solids",
+    state: "solid",
+    hardness: 0.3,
+    breakInto: "water",
+  };
+
+  elements.TesTy_concrete = {
+    color: "#a9a9a9",
+    behavior: [
+      "XX|XX|XX",
+      "XX|DL:TesTy_concrete%10|XX",
+      "M2|M1|M2"
+    ],
+    category: "powders",
+    state: "solid",
   };
 
   elements.joy = {
@@ -688,4 +927,3 @@ elements.TesT_dead_plant = {
    };
 }
 enabledMods.push("https://raw.githubusercontent.com/zubayrhamzahari-stack/TesT.js/main/TesT.js")
-
