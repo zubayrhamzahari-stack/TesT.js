@@ -255,17 +255,18 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     }
   };
 
-  elements.TesTy_wall = {
-    color: "#4b4b4b",
-    behavior: [
-      "XX|DL|XX",
-      "DL|XX|DL",
-      "XX|DB|XX"
-    ],
-    category: "solids",
-    state: "solid",
-    hardness: 0.3,
-    breakInto: "water",
+  elements.TesTy_plant = {
+      color: "#7ac732",
+      behavior: [
+        "XX|M1%10|XX",
+        "M1%10|XX|M1%10",
+        "M2|M1|M2"
+      ],
+      category: "life",
+      state: "solid",
+      reactions: {
+        "TesT_soda": { elem2:null, chance: 0.5, func:behaviors.FEEDPIXEL }
+      }
   };
 
   elements.TesTy_concrete = {
@@ -277,6 +278,25 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     ],
     category: "powders",
     state: "solid",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
+  };
+
+  elements.TesTy_wall = {
+    color: "#4b4b4b",
+    behavior: [
+      "XX|DL|XX",
+      "DL|XX|DL",
+      "XX|DB|XX"
+    ],
+    category: "solids",
+    state: "solid",
+    hardness: 0.3,
+    breakInto: "water",
+    reactions: {
+      "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
+    }
   };
 
   elements.joy = {
@@ -691,8 +711,28 @@ elements.TesT_garlic_steak_omelet_toast = {
   flammable: true, 
   burnInto: "ash", 
   burnTime: 20, 
-  reactions: { "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
- } 
+  reactions: { 
+    "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 },
+    "TesT_vanilla_strawberry_chocolate_cake": { elem1: "TesT_vanilla_strawberry_chocolate_garlic_steak_omelet_cake_toast" }
+  } 
+};
+
+elements.TesT_vanilla_strawberry_chocolate_garlic_steak_omelet_cake_toast = {
+  color: ["#e49560", "#ffb889", "#fd8f8c"
+  ],
+  category: "food",
+  behavior: behaviors.POWDER,
+  state: "solid",
+  density: 600,
+  tempHigh: 100,
+  stateHigh: "TesT_burnt_Food",
+  hardness: 0.2,
+  breakInto: "crumb",
+  flammable: true,
+  burnInto: "ash",
+  burnTime: 20,
+  reactions: {  "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 }
+  }
 };
 
 elements.TesT_burnt_Food = {
@@ -752,6 +792,17 @@ elements.TesT_burnt_Food = {
         reactions: { "lava": { elem1: "stone" } },
         hardness: 0.5,
         breakInto: "TesT_powder"
+    };
+
+    elements.apk = {
+        color: "#ff6f00",
+        behavior: [
+          "CR:smoke%5|XX|CR:smoke%5",
+          "XX|XX|XX",
+          "XX|XX|XX"
+        ],
+        category: "testing",
+        state: "solid"
     };
 
     elements.TesT_soda = {
