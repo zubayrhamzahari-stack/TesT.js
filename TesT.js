@@ -242,7 +242,8 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     reactions: {
       "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
     },
-    conduct: 1
+    conduct: 1,
+    description: "TesTy_sand looks like ordinary grains, pale and harmless, but it hums with unnatural energy. Unlike true sand, it conducts electricity, betraying its disguise the moment current flows."
   };
 
   elements.TesTy_water = {
@@ -252,21 +253,23 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     state: "liquid",
     reactions: {
       "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
-    }
+    },
+    description: "TesTy_water is the first of its kind, the prototype copycat. It mirrors vanilla water so perfectly that it has no quirks, no glitches, no strange behaviors. Its flaw is its lack of flaws — a bland echo, the boring sibling that hides in plain sight."
   };
 
   elements.TesTy_plant = {
-      color: "#7ac732",
-      behavior: [
-        "XX|M1%10|XX",
-        "M1%10|XX|M1%10",
-        "M2|M1|M2"
-      ],
-      category: "life",
-      state: "solid",
-      reactions: {
-        "TesT_soda": { elem2:null, chance: 0.5, func:behaviors.FEEDPIXEL }
-      }
+    color: "#7ac732",
+    behavior: [
+      "XX|M1%10|XX",
+      "M1%10|XX|M1%10",
+      "M2|M1|M2"
+    ],
+    category: "life",
+    state: "solid",
+    reactions: {
+      "TesT_soda": { elem2:null, chance: 0.5, func:behaviors.FEEDPIXEL }
+    },
+    description: "TesTy_plant sways and stirs far too often, restless compared to the calm vanilla plant. Its constant motion exposes its counterfeit nature, feeding on soda instead of sunlight, jittery and unstable."
   };
 
   elements.TesTy_concrete = {
@@ -280,7 +283,8 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     state: "solid",
     reactions: {
       "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
-    }
+    },
+    description: "TesTy_concrete should be solid, dependable, a foundation that lasts. Instead, it flickers and vanishes at random. A disappearing act, it is a counterfeit structure that crumbles into nothing, exposing its instability."
   };
 
   elements.TesTy_wall = {
@@ -296,7 +300,8 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     breakInto: "water",
     reactions: {
       "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
-    }
+    },
+    description: "TesTy_wall pretends to be strong, unyielding, the backbone of any structure. Yet it is fragile, collapsing too easily. Instead of standing firm, it breaks into water, the flimsiest of the TesTy family, a barrier that betrays itself under the slightest pressure."
   };
 
   elements.joy = {
@@ -714,7 +719,7 @@ elements.TesT_garlic_steak_omelet_toast = {
   reactions: { 
     "fire": { elem1: "smoke", elem2: "ash", chance: 0.5 },
     "TesT_vanilla_strawberry_chocolate_cake": { elem1: "TesT_vanilla_strawberry_chocolate_garlic_steak_omelet_cake_toast" }
-  } 
+  }
 };
 
 elements.TesT_vanilla_strawberry_chocolate_garlic_steak_omelet_cake_toast = {
@@ -792,17 +797,6 @@ elements.TesT_burnt_Food = {
         reactions: { "lava": { elem1: "stone" } },
         hardness: 0.5,
         breakInto: "TesT_powder"
-    };
-
-    elements.apk = {
-        color: "#ff6f00",
-        behavior: [
-          "CR:smoke%5|XX|CR:smoke%5",
-          "XX|XX|XX",
-          "XX|XX|XX"
-        ],
-        category: "testing",
-        state: "solid"
     };
 
     elements.TesT_soda = {
