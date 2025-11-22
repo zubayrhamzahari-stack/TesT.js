@@ -15,6 +15,13 @@ function myisTouching(pixel, elementName) {
 }
 
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
+  elements.TesT_js = {
+    color: "#ffe600",
+    behavior: behaviors.WALL,
+    category: "testing",
+    state: "solid"
+  };
+
   elements.TesT_cake = {
     color: ["#ffe6f0", "#ffb3c6", "#ff99b3"],
     behavior: behaviors.STURDYPOWDER,
@@ -302,6 +309,35 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
       "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
     },
     description: "TesTy_wall pretends to be strong, unyielding, the backbone of any structure. Yet it is fragile, collapsing too easily. Instead of standing firm, it breaks into water, the flimsiest of the TesTy family, a barrier that betrays itself under the slightest pressure."
+  };
+
+  elements.TesTy_fire = {
+    color: "#ff6633",
+    behavior: behaviors.GAS,
+    category: "energy",
+    density: 0.2,
+    tempHigh: 2000,
+    stateHigh: "plasma",
+    burn: 80,
+    burnTime: 25,
+    tick: function(pixel) {
+        if(Math.random() < 0.05) {
+            changePixel(pixel,"ash");
+        }
+        else if(Math.random() < 0.05) {
+            changePixel(pixel,"fire");
+        }
+    },
+    description: "A volatile counterfeit gas born from fire. It drifts upward, flickers unpredictably, and often collapses into ash."
+  };
+
+  elements.TesTy_bomb = {
+    color: "#555555",
+    behavior: behaviors.POWDER,
+    category: "weapons",
+    state: "solid",
+    breakInto: "smoke",
+    description: "Counterfeit explosive. Pretends to detonate, yet fizzles into smoke instead of a blast."
   };
 
   elements.joy = {
@@ -810,6 +846,14 @@ elements.TesT_burnt_Food = {
           "seltzer": { elem1: "TesT_soda", elem2: "TesT_gas", chance: 1 },
           "sugar": { elem1: "TesT_soda", elem2: "TesT_gas", chance: 1 }
         }
+    };
+
+    elements.TesT_fart = {
+        color: "#bafc64",
+        behavior: behaviors.GAS,
+        category: "testing",
+        state: "gas",
+        density: 0.3
     };
 
     //  TesT_seed → sprouts into TesT_sprout
