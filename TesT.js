@@ -13,7 +13,7 @@ function myisTouching(pixel, elementName) {
   }
   return false;
 }
-// Sandboxels, I hope you can understand that you should immediately add descriptions to the game, TYSM! :)
+// Sandboxels, I hope you can understand that you should immediately add visible descriptions to the game, TYSM! :)
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
   elements.TesT_js = {
     color: "#ffe600",
@@ -1016,3 +1016,4 @@ elements.TesT_dead_plant = {
    };
 }
 enabledMods.push("https://raw.githubusercontent.com/zubayrhamzahari-stack/TesT.js/main/TesT.js")
+
