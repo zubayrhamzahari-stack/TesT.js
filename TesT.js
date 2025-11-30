@@ -17,7 +17,11 @@ function myisTouching(pixel, elementName) {
 if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
   elements.TesT_js = {
     color: "#ffe600",
-    behavior: behaviors.WALL,
+    behavior: [
+      "M2|M1|M2",
+      "M1|XX|M1",
+      "M2|M1|M2"
+    ],
     category: "testing",
     state: "solid"
   };
@@ -258,6 +262,8 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     behavior: behaviors.LIQUID,
     category: "liquids",
     state: "liquid",
+    tempHigh: 100,
+    stateHigh: "TesTy_steam",
     reactions: {
       "water": { elem1: "TesT_soda", elem2: "TesT_soda"}
     },
@@ -338,6 +344,24 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
     state: "solid",
     breakInto: "smoke",
     description: "Counterfeit explosive. Pretends to detonate, yet fizzles into smoke instead of a blast."
+  };
+
+  elements.TesTy_steam = {
+    color: ["#d9f1ff", "#b3e0ff", "#80c1ff"],
+    behavior: behaviors.GAS,
+    category: "gases",
+    state: "gas",
+    temp: -273.5,
+    description: "Rises and swirls like vanilla steam, but it lacks the warmth and vitality. A cold imitation, it drifts aimlessly, a pale shadow of the real thing."
+  };
+
+  elements.TesTy_wire = {
+    color: "#d46803",
+    behavior: behaviors.WALL,
+    category: "machines",
+    state: "solid",
+    conduct: 0.2,
+    description: "Conducts electricity poorly, flickering and failing to power devices reliably. A faulty imitation, it struggles to fulfill its purpose."
   };
 
   elements.joy = {
@@ -1016,4 +1040,3 @@ elements.TesT_dead_plant = {
    };
 }
 enabledMods.push("https://raw.githubusercontent.com/zubayrhamzahari-stack/TesT.js/main/TesT.js")
-
