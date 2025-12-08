@@ -18,9 +18,9 @@ if (typeof elements !== "undefined" && typeof behaviors !== "undefined") {
   elements.TesT_js = {
     color: "#ffe600",
     behavior: [
-      "M2|M1|M2",
+      "XX|M1|XX",
       "M1|XX|M1",
-      "M2|M1|M2"
+      "XX|M1|XX"
     ],
     category: "testing",
     state: "solid"
